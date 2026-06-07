@@ -1,0 +1,113 @@
+/* ════════ TASK FORM ════════ */
+.task-form-panel {
+  /* inherits from panel-panel */
+}
+
+.task-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid rgba(99,102,241,0.1);
+}
+
+.task-form-header .eyebrow { margin-bottom: 0.4rem; }
+
+.task-form-header h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text1);
+  letter-spacing: -0.02em;
+}
+
+.cancel-edit {
+  flex-shrink: 0;
+  background: #FFE4E6 !important;
+  border-color: #FECDD3 !important;
+  color: #BE123C !important;
+  font-size: 0.82rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+.cancel-edit:hover {
+  background: #FECDD3 !important;
+  transform: translateY(-1px);
+}
+
+/* Form */
+.task-form { display: grid; gap: 1.2rem; }
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text2);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: var(--bg2);
+  border: 1.5px solid rgba(99,102,241,0.16);
+  border-radius: var(--r-md);
+  color: var(--text1);
+  padding: 0.9rem 1.1rem;
+  font-size: 0.92rem;
+  min-height: 50px;
+  transition: border-color var(--dur), box-shadow var(--dur), background var(--dur);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text3); font-style: italic; }
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--violet);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.10);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Submit button */
+.task-form .btn-primary {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  border-radius: 14px;
+  background: var(--grad-main);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: none;
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+  cursor: pointer;
+  transition: transform var(--dur), box-shadow var(--dur), filter var(--dur);
+  margin-top: 0.3rem;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+.task-form .btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.task-form .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.52);
+  filter: brightness(1.06);
+}
+.task-form .btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}

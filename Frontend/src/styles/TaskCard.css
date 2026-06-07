@@ -1,0 +1,208 @@
+/* ════════ TASK CARD ════════ */
+.task-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1.5px solid rgba(99,102,241,0.1);
+  box-shadow: var(--shadow-sm);
+  padding: 1.35rem;
+  display: grid;
+  gap: 0.9rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(124,58,237,0.3);
+}
+
+/* Gradient left accent bar */
+.task-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--grad-main);
+  border-radius: 4px 0 0 4px;
+}
+
+/* Top-right decoration */
+.task-card::after {
+  content: '';
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
+  top: -25px; right: -25px;
+  pointer-events: none;
+  transition: transform var(--dur);
+}
+.task-card:hover::after { transform: scale(1.5); }
+
+/* Completed state */
+.task-card.task-completed {
+  background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
+  border-color: rgba(16,185,129,0.2);
+}
+.task-card.task-completed::before { background: var(--grad-green); }
+.task-card.task-completed::after  { background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%); }
+.task-card.task-completed:hover   { border-color: rgba(16,185,129,0.4); }
+
+/* ─── Header ─── */
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text1);
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.task-card.task-completed .task-title {
+  text-decoration: line-through;
+  color: var(--text3);
+}
+
+/* ─── Status Badge ─── */
+.status-badge, .task-status {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-pending, .task-status.status-badge-pending {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+.status-completed, .task-status.status-badge-completed {
+  background: #D1FAE5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+/* ─── Meta ─── */
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.priority-chip, .due-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.priority-low {
+  background: #D1FAE5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+.priority-medium {
+  background: #EDE9FE;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+
+.priority-high {
+  background: #FFE4E6;
+  color: #BE123C;
+  border: 1px solid #FECDD3;
+}
+
+.due-date {
+  background: var(--bg2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+/* ─── Description ─── */
+.task-description {
+  font-size: 0.87rem;
+  color: var(--text2);
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Actions ─── */
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(99,102,241,0.08);
+  flex-wrap: wrap;
+}
+
+.task-actions .btn {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--r-sm);
+}
+
+/* Edit → indigo ghost */
+.task-actions .btn:nth-child(1) {
+  background: #EDE9FE;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
+}
+.task-actions .btn:nth-child(1):hover {
+  background: #DDD6FE;
+  border-color: #7C3AED;
+  transform: translateY(-1px);
+}
+
+/* Complete → emerald ghost */
+.task-actions .btn:nth-child(2) {
+  background: #D1FAE5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+.task-actions .btn:nth-child(2):hover {
+  background: #A7F3D0;
+  border-color: #10B981;
+  transform: translateY(-1px);
+}
+
+/* Delete → rose */
+.task-actions .btn-danger {
+  background: linear-gradient(135deg, #F43F5E, #EC4899) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(244,63,94,0.3);
+}
+.task-actions .btn-danger:hover {
+  box-shadow: 0 8px 20px rgba(244,63,94,0.45);
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
