@@ -2,7 +2,7 @@
 
 A modern full-stack task management application built with the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. TaskMaster Pro helps users organize, track, and manage tasks efficiently through a clean, responsive, and secure interface.
 
-![Dashboard Preview](./screenshots/dashboard.png)
+![Dashboard Preview](./screenshots/Dashboard.png)
 
 ---
 
