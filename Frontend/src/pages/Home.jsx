@@ -2,7 +2,6 @@ import { Link, Navigate } from 'react-router-dom';
 import '../styles/Home.css';
 
 function Home() {
-    console.log("HOME PAGE LOADED");
   const token = localStorage.getItem('token');
 
   if (token) {
