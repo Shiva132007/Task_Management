@@ -34,7 +34,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "task-management-git-main-shiva132007s-projects.vercel.app"
+      "https://task-management-git-main-shiva132007s-projects.vercel.app"
     ],
     credentials: true,
   })
