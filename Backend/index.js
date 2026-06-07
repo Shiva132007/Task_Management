@@ -30,7 +30,16 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-app.use(cors({ origin: CLIENT_ORIGIN }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "task-management-git-main-shiva132007s-projects.vercel.app"
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;

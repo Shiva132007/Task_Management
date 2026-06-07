@@ -1,5 +1,6 @@
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import Home from './pages/Home.jsx';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard.jsx';
 import ProtectRoute from './Components/ProtectedRoute.jsx';
@@ -21,7 +22,7 @@ function App() {
           draggable
         />
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
@@ -32,7 +33,7 @@ function App() {
               </ProtectRoute>
             }
           />
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </div>
