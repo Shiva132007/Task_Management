@@ -1,3 +1,5 @@
+import { ZodError } from "zod";
+
 export const validate = (schema) => (req, res, next) => {
   try {
     schema.parse({
@@ -5,15 +7,16 @@ export const validate = (schema) => (req, res, next) => {
       query: req.query,
       params: req.params,
     });
+
     next();
   } catch (error) {
-    const formattedErrors = error.errors.map((err) => ({
-      path: err.path.join("."),
-      message: err.message,
-    }));
-    return res.status(400).json({
-      message: "Invalid request data",
-      errors: formattedErrors,
-    });
+    if (error instanceof ZodError) {
+      return res.status(400).json({
+        message: "Validation failed",
+        errors: error.issues,
+      });
+    }
+
+    next(error);
   }
 };
