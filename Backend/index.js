@@ -12,6 +12,7 @@ import { notFound, errorHandler } from "./src/middleware/errorMiddleware.js";
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1);
 
 const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
